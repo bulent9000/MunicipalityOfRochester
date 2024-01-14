@@ -1,0 +1,123 @@
+﻿@model Municipality.Model.ViewModels.EmployeesVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="margin-left:100px;">
+    <h2>Employees @(Model.Employees.EmployeesId <= 0 ? "Add" : "Edit")</h2>
+
+
+
+    <form method="post" enctype="multipart/form-data">
+
+        <input asp-for="Employees.EmployeesId" type="hidden" />
+        <input asp-for="Employees.Photo" type="hidden" />
+
+
+        @if (@Model != null)
+        {
+            <div class="row">
+                <div class="col-6">
+
+                    <img src="@Model.Employees.Photo" style="width:250px;" />
+                </div>
+                <div class="form-check col-6">
+                    <label asp-for="Employees.Gender">
+                        Gender<br />
+
+                        <input type="radio" class="form-check-inline" name="Employees.Gender" value="true" />Erkek
+
+                        <input type="radio" class="form-check-inline" name="Employees.Gender" value="false" />Kadın
+
+                    </label>
+                </div>
+
+
+            </div>
+        }
+
+        <div class="row my-1">
+            <label asp-for="Employees.EmpIdentityNumber"></label>
+            <input asp-for="Employees.EmpIdentityNumber" class="form-control" />
+
+        </div>
+
+        <div class="row my-1">
+            <label asp-for="Employees.Name"></label>
+            <input asp-for="Employees.Name" class="form-control" />
+
+        </div>
+
+        <div class="row my-1">
+            <label asp-for="Employees.Surname"></label>
+            <input asp-for="Employees.Surname" class="form-control" />
+
+        </div>
+
+
+        <div class="row my-1">
+            <label asp-for="Employees.Age"></label>
+            <input asp-for="Employees.Age" class="form-control" />
+
+        </div>
+
+        <div class="row my-1">
+            <label asp-for="Employees.Phone"></label>
+            <input asp-for="Employees.Phone" class="form-control" />
+
+        </div>
+        <div class="row my-1">
+            <label asp-for="Employees.Branch"></label>
+            <input asp-for="Employees.Branch" class="form-control" />
+
+        </div>
+        <div class="row my-1">
+            <label asp-for="Employees.Occupation"></label>
+            <input asp-for="Employees.Occupation" class="form-control" />
+
+        </div>
+        <div class="row my-1">
+            <label asp-for="Employees.Duty"></label>
+            <input asp-for="Employees.Duty" class="form-control" />
+
+        </div>
+        <div class="row my-1">
+            <label asp-for="Employees.DateOfStartWork"></label>
+            <input asp-for="Employees.DateOfStartWork" class="form-control" />
+
+        </div>
+        <div class="row my-1">
+            <label asp-for="Employees.DateOfFinishWork"></label>
+            <input asp-for="Employees.DateOfFinishWork" class="form-control" />
+
+        </div>
+        <div class="row my-1">
+
+            <label asp-for="Employees.EmployeesId"></label>
+            <select asp-for="Employees.EmployeesId" asp-items="@Model.Managers" class="form-control">
+                <option disabled selected>--Employees select </option>
+
+
+            </select>
+
+        </div>
+
+
+        <div class="row my-1">
+            <label asp-for=Employees.Photo></label>
+            <input type="file" id="file" name="file" accept="image/*" class="form-control" value="" />
+
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">@(Model.Employees.EmployeesId <= 0 ? "Add" : "Edit")</button>
+        </div>
+
+
+
+
+
+
+    </form>
+
+</div>

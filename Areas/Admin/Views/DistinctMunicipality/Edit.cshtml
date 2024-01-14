@@ -1,0 +1,45 @@
+﻿@model Municipality.Model.DistrictMunicipality
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 border border-4 rounded rounded-3 p-4">
+            <h3 class="text-info p-2 m-1 text-center">Update Municipality</h3>
+            <form method="post" asp-action="Edit">
+                <div class="form-check">
+                    <label asp-for="DistMunName"></label>
+                    <input type="text" asp-for="DistMunName" class="form-control" placeholder="Enter Municipality Name" />
+                    <input type="hidden" asp-for="DistMunId" />
+                    <span class="text-danger" asp-validation-for="DistMunName"></span>
+                </div>
+
+
+                <div class="form-check">
+                    <label asp-for="DistMunAddress"></label>
+                    <input type="text" asp-for="DistMunAddress" class="form-control" placeholder="Enter Municipality Address" />
+                    <span class="text-danger" asp-validation-for="DistMunAddress"></span>
+
+                </div>
+                    <div class="form-check">
+                    <label asp-for="DistMunCity"></label>
+                    <input type="text" asp-for="DistMunCity" class="form-control" placeholder="Enter Municipality City" />
+                    <span class="text-danger" asp-validation-for="DistMunCity"></span>
+
+                </div>
+                <div class="form-check">
+                    <label asp-for="DistMunPhone"></label>
+                    <input type="text" asp-for="DistMunPhone" class="form-control" placeholder="Enter Municipality Phone" />
+                    <span class="text-danger" asp-validation-for="DistMunPhone"></span>
+
+                </div>
+
+                <div>
+                    <input type="submit" class="btn btn-sm btn-warning m-2 p-2 float-end" value="Update" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

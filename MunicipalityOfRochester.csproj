@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\Managers\" />
-    <Folder Include="wwwroot\img\Employees\" />
+    <Folder Include="wwwroot\img\manager\" />
+    <Folder Include="wwwroot\img\employee\" />
   </ItemGroup>
 
 </Project>

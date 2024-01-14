@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Municipality.Model.Employees>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Employees List</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Employees" asp-action="Crup" class="btn btn-primary">
+                <span>New Employee Add</span>
+            </a>
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <table class="table table-bordered table-striped my-2">
+
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Identity Number</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Branch</th>
+                    <th>Occupation</th>
+                    <th>Duty</th>
+                    <th>Start Work</th>
+                    <th>Finish Work</th>
+                    <th>Manager Id</th>
+
+                </tr>
+
+
+            </thead>
+            <tbody>
+
+                @foreach (var employee in Model)
+                {
+
+
+                    <tr>
+                        <td><img src="@employee.Photo" style="width:80px;" /></td>
+                        <td>@employee.EmpIdentityNumber</td>
+                        <td>@employee.Name</td>
+                        <td>@employee.Surname</td>
+                        <td>@employee.Age</td>
+                        <td>
+                            @if (employee.Gender == true)
+                            {
+                                <span>Erkek</span>
+                            }
+                            else
+                            {
+                                <span>Kadın</span>
+                            }
+
+
+                        </td>
+
+
+                        <td>@employee.Phone</td>
+                        <td>@employee.Branch</td>
+                        <td>@employee.Occupation</td>
+                        <td>@employee.Duty</td>
+                        <td>@employee.DateOfStartWork</td>
+                        <td>@employee.DateOfFinishWork</td>
+                        <td>@employee.ManagerId</td>
+
+                        <td>
+
+                            <a asp-controller="Employees" asp-action="Crup" asp-route-id="@employee.EmployeesId" class="btn btn-warning">Edit</a>
+                            <a asp-controller="Employees" asp-action="Delete" asp-route-id="@employee.EmployeesId" class="btn btn-danger">Delete</a>
+
+
+                        </td>
+                    </tr>
+
+
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+</div>
