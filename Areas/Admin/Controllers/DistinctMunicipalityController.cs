@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Municipality.Data.Repository.IRepository;
 using Municipality.Model;
+using System.Drawing.Printing;
 
 namespace MunicipalityOfRochester.Areas.Admin.Controllers
 {
@@ -20,10 +21,7 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers
             return View(DistrictMunicipality);
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
+      
 
         [HttpPost]
         public IActionResult Create(DistrictMunicipality districtMunicipality)
@@ -35,10 +33,27 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers
 
         }
 
+     
+        [HttpPost]
+        public IActionResult Edit(DistrictMunicipality districtMunicipality)
+        {
+
+            _unitOfWork.DistrictMunicipality.Update(districtMunicipality);
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
+
+
+        }
+        public IActionResult Delete(int id)
+        {
+
+            var districtMunicipality=_unitOfWork.DistrictMunicipality.GetFirstOrDefault(k => k.DistMunId == id);
+
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
 
 
 
-
-
+        }
     }
 }
