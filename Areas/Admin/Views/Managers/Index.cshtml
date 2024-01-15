@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Municipality.Model.Managers>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Managers List</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Managers" asp-action="Crup" class="btn btn-primary">
+                <span>Manager Add</span>
+            </a>
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <table class="table table-bordered table-striped my-2">
+
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Identity Number</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Department of Work</th>               
+                    <th>Municipality Id</th>
+
+                </tr>
+
+
+            </thead>
+            <tbody>
+
+                @foreach (var manager in Model)
+                {
+
+
+                    <tr>
+                        <td><img src="@manager.Photo" style="width:80px;" /></td>
+                        <td>@manager.ManIdentityNumber</td>
+                        <td>@manager.Name</td>
+                        <td>@manager.Surname</td>
+                        <td>@manager.Age</td>
+                        <td>
+                            @if (manager.Gender == true)
+                            {
+                                <span>Erkek</span>
+                            }
+                            else
+                            {
+                                <span>Kadın</span>
+                            }
+
+
+                        </td>
+
+
+                        <td>@manager.Phone</td>                     
+                        <td>@manager.DepartmentOfWork</td>
+                        <td>@manager.DistMunId</td>
+                       
+                        <td>
+
+                            <a asp-controller="Employees" asp-action="Crup" asp-route-id="@manager.ManagerId" class="btn btn-warning">Edit</a>
+                            <a asp-controller="Employees" asp-action="Delete" asp-route-id="@manager.ManagerId" class="btn btn-danger">Delete</a>
+
+
+                        </td>
+                    </tr>
+
+
+                }
+
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+</div>

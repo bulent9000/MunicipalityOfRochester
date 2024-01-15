@@ -1,0 +1,106 @@
+﻿@model Municipality.Model.ViewModels.ManagersVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="margin-left:100px;">
+    <h2>Managers @(Model.Managers.ManagerId <= 0 ? "Add" : "Edit")</h2>
+
+
+
+    <form method="post" enctype="multipart/form-data">
+
+        <input asp-for="Managers.ManagerId" type="hidden" />
+        <input asp-for="Managers.Photo" type="hidden" />
+
+
+        @if (@Model != null)
+        {
+            <div class="row">
+                <div class="col-6">
+
+                    <img src="@Model.Managers.Photo" style="width:250px;" />
+                </div>
+                <div class="form-check col-6">
+                    <label asp-for="Managers.Gender">
+                        Gender<br />
+
+                        <input type="radio" class="form-check-inline" name="Managers.Gender" value="true" />Erkek
+
+                        <input type="radio" class="form-check-inline" name="Managers.Gender" value="false" />Kadın
+
+                    </label>
+                </div>
+
+
+            </div>
+        }
+
+        <div class="row my-1">
+            <label asp-for="Managers.ManIdentityNumber"></label>
+            <input asp-for="Managers.ManIdentityNumber" class="form-control" />
+
+        </div>
+
+        <div class="row my-1">
+            <label asp-for="Managers.Name"></label>
+            <input asp-for="Managers.Name" class="form-control" />
+
+        </div>
+
+        <div class="row my-1">
+            <label asp-for="Managers.Surname"></label>
+            <input asp-for="Managers.Surname" class="form-control" />
+
+        </div>
+
+
+        <div class="row my-1">
+            <label asp-for="Managers.Age"></label>
+            <input asp-for="Managers.Age" class="form-control" />
+
+        </div>
+
+        <div class="row my-1">
+            <label asp-for="Managers.Phone"></label>
+            <input asp-for="Managers.Phone" class="form-control" />
+
+        </div>
+      
+       
+       
+        <div class="row my-1">
+            <label asp-for="Managers.DepartmentOfWork"></label>
+            <input asp-for="Managers.DepartmentOfWork" class="form-control" />
+
+        </div>
+        <div class="row my-1">
+
+            <label asp-for="Managers.ManagerId"></label>
+            <select asp-for="Managers.ManagerId" asp-items="@Model.DistrictMunicipality" class="form-control">
+                <option disabled selected>--Manager select </option>
+
+
+            </select>
+
+        </div>
+
+
+        <div class="row my-1">
+            <label asp-for=Managers.Photo></label>
+            <input type="file" id="file" name="file" accept="image/*" class="form-control" value="" />
+
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">@(Model.Managers.ManagerId <= 0 ? "Add" : "Edit")</button>
+        </div>
+
+
+
+
+
+
+    </form>
+
+</div>
