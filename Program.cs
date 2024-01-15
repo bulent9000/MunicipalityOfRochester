@@ -1,13 +1,22 @@
 using Microsoft.EntityFrameworkCore;
 using Municipality.Data;
+using Municipality.Data.Repository;
+using Municipality.Data.Repository.IRepository;
+using NuGet.Protocol.Core.Types;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var connectionString = builder.Configuration.GetConnectionString("dbcon");
 builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
 
 var app = builder.Build();
 

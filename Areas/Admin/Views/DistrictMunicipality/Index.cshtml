@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Municipality.Model.DistrictMunicipality>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Municipality List</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="DistrictMunicipality" asp-action="Create" class="btn btn-primary">
+                <span>Municipality Add</span>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-striped my-2">
+            <thead>
+                <tr>
+                    <th>Municipality Name</th>
+                    <th>Municipality Address</th>
+                    <th>Municipality City</th>
+                    <th>Municipality Phone</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var municipality in Model)
+                {
+                    <tr>
+
+                        <td>@municipality.DistMunName</td>
+                        <td>@municipality.DistMunAddress</td>
+                        <td>@municipality.DistMunCity</td>
+                        <td>@municipality.DistMunPhone</td>
+
+                        <td>
+                            <a asp-controller="DistrictMunicipality" asp-action="Edit" asp-route-id="@municipality.DistMunId" class="btn btn-warning">
+                                Edit
+                            </a>
+                            <a asp-controller="DistrictMunicipality" asp-action="Delete" asp-route-id="@municipality.DistMunId" class="btn btn-danger">
+                                Delete
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+
+
+
+        </table>
+    </div>
+
+</div>

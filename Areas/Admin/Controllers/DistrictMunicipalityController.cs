@@ -7,11 +7,11 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
-    public class DistinctMunicipalityController : Controller
+    public class DistrictMunicipalityController : Controller
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        public DistinctMunicipalityController(IUnitOfWork unitOfWork)
+        public DistrictMunicipalityController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
