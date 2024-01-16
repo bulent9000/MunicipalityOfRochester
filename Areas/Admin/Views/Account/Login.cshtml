@@ -1,9 +1,152 @@
 ﻿@model Municipality.Model.ViewModels.LoginSignUpViewModel
 @{
     ViewData["Title"] = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
-<div class="container">
+<head>
+    <link href="~/AdminTemplate/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .form-label {
+            padding-left: 120px;
+            width: 320px;
+            height: 30px;
+            color: white;
+            background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+            border-radius: 20px;
+            padding-top: 2px;
+        }
+
+        .gradient-custom-2, .text-light {
+            background: #fccb90;
+            background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+            background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+        }
+
+        media (min-width: 768px) {
+            .gradient-form
+
+        {
+            height: 100vh !important;
+        }
+
+        }
+
+        media (min-width: 769px) {
+            .gradient-custom-2
+
+        {
+            border-top-right-radius: .3rem;
+            border-bottom-right-radius: .3rem;
+        }
+
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+
+                                    <div class="text-center">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                                             style="width: 185px;" alt="logo">
+                                        <h4 class="mt-1 mb-5 pb-1">Municipality Of Rochester</h4>
+                                    </div>
+
+                                    <form method="post" asp-action="Login">
+                                        <p>Please login to your account</p>
+
+                                        <div class="form-outline mb-4">
+                                            <b>  <label asp-form="Email" class="form-label" for="form2Example11">Email</label></b>
+                                            <input asp-for="Email" type="email" id="form2Example11" class="form-control"
+                                                   placeholder="Please enter email" />
+                                            <span class="text-danger">@TempData["errorEmail"]</span>
+
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <b>    <label asp-form="Password" style="" class="form-label" for="form2Example22">Password</label></b>
+
+                                            <input asp-for="Password" type="password" id="form2Example22" class="form-control" placeholder="Please enter password" />
+                                            <span class="text-danger">@TempData["errorPassword"]</span>
+                                        </div>
+
+                                        <div class="text-center pt-1 mb-5 pb-1">
+                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">
+                                                Log
+                                                in
+                                            </button>
+
+                                            <a class="text-muted" href="#!">Forgot password?</a>
+                                        </div>
+
+                                        <div class="d-flex align-items-center justify-content-center pb-4">
+                                            <p class="mb-0 me-2">Don't have an account?</p>
+                                            @*    <button type="button" class="btn btn-outline-danger">Create new</button>*@
+                                            <a class="text-light btn btn-primary font-weight-bold"
+                                               asp-action="SignUp" asp-controller="Account">Sign Up</a>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4">WELCOME TO OUR MUNICIPALITY WEB SITES </h4>
+                                    <p class="small mb-0">
+                                        Rochester (map) combines small-town accessibility with big-city
+                                        services. Amidst some of the most beautiful scenery in the
+                                        United States, residents enjoy a housing market known for
+                                        great bargains, short commute times, world-class cultural
+                                        and entertainment offerings and a fast-growing innovation
+                                        economy poised to thrive in the 21st century.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#open").click(function () {
+                $("#open").hide();
+                $("#closed").show();
+                $("#password").attr("type", "text");
+            });
+            $("#closed").click(function () {
+                $("#closed").hide();
+                $("#open").show();
+                $("#password").attr("type", "password");
+            });
+
+
+        });
+
+
+
+    </script>
+</body>
+
+
+
+
+@*//***********************************************************************@
+@*<div class="container">
     <div class="row mt-lg-5">
         <div class="col-4 offset-4 border border-primary rounded pl-5 pr-5 pb-5">
             <div class="text-center">
@@ -70,4 +213,4 @@
 
 
 
-</script>
+</script>*@

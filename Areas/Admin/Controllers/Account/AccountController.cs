@@ -14,7 +14,7 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers.Account
         public readonly AppDbContext db;
         public AccountController(AppDbContext db)
         {
-            this.db = db;       
+            this.db = db;
         }
 
 
@@ -34,18 +34,20 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers.Account
             if (ModelState.IsValid)
             {
 
-                var data = db.Users.Where(i => i.UserName == model.UserName).SingleOrDefault();
+                var data = db.Users.Where(i => i.Email == model.Email).SingleOrDefault();
+              
+
                 if (data != null)
                 {
-                    bool isValid=(data.UserName==model.UserName && data.Password==model.Password);
-
+                    bool isValid = (data.Email == model.Email && data.Password == model.Password);
+                    model.UserName = data.UserName;
                     if (isValid)
                     {
                         var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, model.UserName) }, CookieAuthenticationDefaults.AuthenticationScheme);
                         var principal = new ClaimsPrincipal(identity);
                         HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                        HttpContext.Session.SetString("Username", model.UserName);
-                        return RedirectToAction("Index", "Login Gidilecek sayfa Controller");
+                        HttpContext.Session.SetString("UserName", model.UserName);
+                        return RedirectToAction("Index", "Employees");
                     }
                     else
                     {
@@ -55,7 +57,7 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers.Account
                 }
                 else
                 {
-                    TempData["errorUsername"] = "Username not found!";
+                    TempData["errorEmail"] = "Email not found!";
                     return View(model);
                 }
 
@@ -89,7 +91,7 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers.Account
             return View();
         }
 
-  
+
         [HttpPost]
         public IActionResult SignUp(LoginSignUpViewModel model)
         {
@@ -101,7 +103,7 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers.Account
                     Email = model.Email,
                     Password = model.Password,
                     Mobile = model.Mobile,
-                    
+
 
 
                 };

@@ -34,7 +34,10 @@
     * Template URL: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
+
+
     ======================================================== -->
+    @*   @await RenderSectionAsync("Css",required:false)*@
 </head>
 
 <body>
@@ -60,17 +63,17 @@
         <div class="container d-flex justify-content-between">
 
             <div class="logo">
-                <h1 class="text-light"><a href="index.html">Flattern</a></h1>
+                <h1 class="text-light"><a href="index.html"></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="~/AdminTemplate/assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="active" href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a class="active" href="#">Home</a></li>
+                    <li><a href="@Url.Action("Index","DistrictMunicipality")">Municipality</a></li>
+                    <li><a href="@Url.Action("Index","Employees")">Employees</a></li>
+                    <li><a href="@Url.Action("Index","Managers")">Managers</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
@@ -94,7 +97,24 @@
                         </ul>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div style="margin-left:20px;" class="navbar float-right">
+                            <div>
+                                <b>
+                                    <span style="margin-left:5px; color:crimson;">User Name</span>
+                                </b>
+                                <br />
+                                <span class="text-success font-weight-bold p-2">@User.Identity.Name</span>
+                                <br />
+                            </div>
+                            <a style="margin-left:10px;" class="btn btn-sm btn-danger" asp-controller="Account" asp-action="Logout"> <span style="padding-right:5px;">Sign Out</span></a>
+
+                           
+                        </div>
+                    }
                 </ul>
+
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
