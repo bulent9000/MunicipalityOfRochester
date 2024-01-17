@@ -12,7 +12,19 @@ namespace MunicipalityOfRochester.Controllers
         {
             return View();
         }
+        public IActionResult Pricing()
+        {
+            return View();
+        }
+        public IActionResult Blog()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
 
-       
+
     }
 }
