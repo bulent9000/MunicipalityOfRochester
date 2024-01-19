@@ -47,7 +47,7 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers.Account
                         var principal = new ClaimsPrincipal(identity);
                         HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
                         HttpContext.Session.SetString("UserName", model.UserName);
-                        return RedirectToAction("Index", "Employees");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {

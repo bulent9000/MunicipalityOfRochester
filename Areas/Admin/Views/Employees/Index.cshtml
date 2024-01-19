@@ -15,6 +15,16 @@
 
         </div>
     </div>
+    @* search*@
+
+    @using (Html.BeginForm("Index", "Employees"))
+    {
+
+        @Html.TextBox("employeesSearch",null,new { placeholder="Enter the identity number to search for...", style="margin-left:400px;  width:400px;"})
+        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <br />
+        <input type="submit" value="Arama" style="margin-left:400px;  width:400px; margin-top:10px;" />
+    }
 
 
 

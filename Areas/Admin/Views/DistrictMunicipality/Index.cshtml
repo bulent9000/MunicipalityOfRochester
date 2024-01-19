@@ -17,6 +17,19 @@
             </a>
         </div>
     </div>
+
+    @* search*@
+
+    @using (Html.BeginForm("Index", "DistrictMunicipality"))
+    {
+
+        @Html.TextBox("municipalitySearch",null,new { placeholder="Enter the name of the municipality to search for...", style="margin-left:400px;  width:400px;"})
+        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        <br />
+        <input type="submit" value="Arama" style="margin-left:400px;  width:400px; margin-top:10px;" />
+    }
+
+
     <div class="row">
         <table class="table table-bordered table-striped my-2">
             <thead>

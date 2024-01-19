@@ -20,10 +20,18 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers
 
 
         }
-        public IActionResult Index()
+        public IActionResult Index(string managerSearch)
         {
+
             var managerList = _unitOfWork.Managers.GetAll();
-            return View(managerList);
+
+            if (managerSearch!=null)
+            {
+                managerList = managerList.Where(m => m.Name.Contains(managerSearch));
+
+            }
+
+            return View(managerList.ToList());
         }
 
 

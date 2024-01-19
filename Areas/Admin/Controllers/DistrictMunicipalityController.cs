@@ -15,9 +15,18 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-        public IActionResult Index()
+        public IActionResult Index(string municipalitySearch)
         {
             IEnumerable<DistrictMunicipality> DistrictMunicipality = _unitOfWork.DistrictMunicipality.GetAll();
+
+            if (municipalitySearch != null)
+            {
+                DistrictMunicipality = DistrictMunicipality.Where(i => i.DistMunName.Contains(municipalitySearch));
+            }
+
+
+
+
             return View(DistrictMunicipality);
         }
 
