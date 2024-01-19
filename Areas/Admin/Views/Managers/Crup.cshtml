@@ -1,14 +1,14 @@
 ﻿@model Municipality.Model.ViewModels.ManagersVM
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutMan.cshtml";
 }
 <div style="margin-left:100px;">
     <h2>Managers @(Model.Managers.ManagerId <= 0 ? "Add" : "Edit")</h2>
 
 
 
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" style="margin-right:50px;">
 
         <input asp-for="Managers.ManagerId" type="hidden" />
         <input asp-for="Managers.Photo" type="hidden" />
@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-6">
 
-                    <img src="@Model.Managers.Photo" style="width:250px;" />
+                    <img src="@Model.Managers.Photo" style="width:60px; height:60px;" />
                 </div>
                 <div class="form-check col-6">
                     <label asp-for="Managers.Gender">

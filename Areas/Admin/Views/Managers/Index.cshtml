@@ -29,7 +29,7 @@
         <input type="submit" value="Arama" style="margin-left:400px;  width:400px; margin-top:10px;" />
     }
    
-    <div class="row">
+    <div class="row" style="justify-content:center; align-items:center;">
         <table class="table table-bordered table-striped my-2">
 
             <thead>
@@ -55,7 +55,7 @@
 
 
                     <tr>
-                        <td><img src="@manager.Photo" style="width:80px;" /></td>
+                        <td><img src="@manager.Photo" style="width:60px; height:60px;" /></td>
                         <td>@manager.ManIdentityNumber</td>
                         <td>@manager.Name</td>
                         <td>@manager.Surname</td>
@@ -80,8 +80,8 @@
                        
                         <td>
 
-                            <a asp-controller="Employees" asp-action="Crup" asp-route-id="@manager.ManagerId" class="btn btn-warning">Edit</a>
-                            <a asp-controller="Employees" asp-action="Delete" asp-route-id="@manager.ManagerId" class="btn btn-danger">Delete</a>
+                            <a asp-controller="Managers" asp-action="Crup" asp-route-id="@manager.ManagerId" class="btn btn-warning">Edit</a>
+                            <a asp-controller="Managers" asp-action="Delete" asp-route-id="@manager.ManagerId" class="btn btn-danger">Delete</a>
 
 
                         </td>

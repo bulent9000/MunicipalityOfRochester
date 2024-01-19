@@ -60,4 +60,5 @@ app.MapControllerRoute(
 
 
 pattern: "{area=Admin}/{controller=User}/{action=Index}/{id?}");
+
 app.Run();
