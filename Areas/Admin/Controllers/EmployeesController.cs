@@ -22,14 +22,20 @@ namespace MunicipalityOfRochester.Areas.Admin.Controllers
         }
         public IActionResult Index(string employeesSearch)
         {
-            var employeesList = _unitOfWork.Employees.GetAll();
-
-            if (employeesSearch != null)
-            {
-                employeesList= employeesList.Where(i=>i.EmpIdentityNumber.Contains(employeesSearch));
-            }
         
-            return View(employeesList.ToList());
+                var employeesList = _unitOfWork.Employees.GetAll();
+
+                if (employeesSearch != null)
+                {
+                    employeesList = employeesList.Where(i => i.EmpIdentityNumber.Contains(employeesSearch));
+                }
+
+                return View(employeesList.ToList());
+        
+         
+             
+          
+
         }
 
 
